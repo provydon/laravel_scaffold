@@ -68,7 +68,14 @@ class User extends Authenticatable
         if ($this->image == "" || $this->image == null) {
             return url("images/unknown_user.png");
         }
-        return Storage::url($this->image);
+
+        $stored_image = Storage::disk('public')->exists($this->image);
+
+        if ($stored_image) {
+            return Storage::url($this->image);
+        }
+
+        return $this->image;
     }
 
     public function userLogs()

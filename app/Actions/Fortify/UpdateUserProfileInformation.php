@@ -2,6 +2,7 @@
 
 namespace App\Actions\Fortify;
 
+use App\Services\AllServices\FileService;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -25,8 +26,12 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         ])->validateWithBag('updateProfileInformation');
 
         if (isset($input['photo'])) {
-            $user->updateProfilePhoto($input['photo']);
+            // $user->updateProfilePhoto($input['photo']);
+            $path = FileService::storeFile($input['photo'], 'avatars', false);
+            $user->image = $path;
+            $user->save();
         }
+        
 
         if ($input['email'] !== $user->email &&
             $user instanceof MustVerifyEmail) {

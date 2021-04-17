@@ -1,3 +1,26 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+.container {
+    @apply max-w-7xl mx-auto;
+}
+
+.index-body {
+    @apply my-10;
+}
+
+.nav-logo {
+    @apply h-7 mb-3 mt-3 w-auto;
+}
+
+.nav-link {
+    @apply text-sm justify-center mb-3 md:mb-0;
+    padding: 0 20px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.04em;
+    color: #4f4f4f;
+}

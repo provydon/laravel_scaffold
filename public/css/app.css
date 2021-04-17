@@ -33373,6 +33373,48 @@ select {
   --tw-backdrop-sepia: sepia(100%);
 }
 
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80rem;
+}
+
+.index-body {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.nav-logo {
+  height: 1.75rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  width: auto;
+}
+
+.nav-link {
+  justify-content: center;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .nav-link {
+    margin-bottom: 0px;
+  }
+}
+
+.nav-link {
+  padding: 0 20px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.04em;
+  color: #4f4f4f;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
@@ -195652,4 +195694,3 @@ select {
     --tw-backdrop-sepia: sepia(100%);
   }
 }
-

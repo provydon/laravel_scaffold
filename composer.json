@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "ampeco/nova-date-range-filter": "^0.1.2",
+        "company-api/nova-theme": "*",
         "digital-creative/collapsible-resource-manager": "^1.3",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
@@ -20,11 +21,11 @@
         "laravel/jetstream": "^2.3",
         "laravel/nova": "*",
         "laravel/sanctum": "^2.6",
+        "laravel/socialite": "^5.2",
         "laravel/tinker": "^2.5",
         "spatie/laravel-permission": "^4.0",
         "tightenco/ziggy": "^1.0",
-        "vyuldashev/nova-permission": "^2.11",
-        "company-api/nova-theme": "*"
+        "vyuldashev/nova-permission": "^2.11"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

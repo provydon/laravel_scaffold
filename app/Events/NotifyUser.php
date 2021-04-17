@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -19,9 +20,32 @@ class NotifyUser
      *
      * @return void
      */
-    public function __construct()
+    public $user;
+    public $title;
+    public $description;
+    public $notification;
+    public $dateTime;
+
+    /**
+     * Create a new event instance.
+     *
+     * @return void
+     */
+    public function __construct(User $user, $title, $description)
     {
-        //
+        $this->user = $user;
+        $this->title = $title;
+        $this->description = $description;
+
+        // Set Notification
+        // $notification = new Notification;
+        // $notification->user_id = $user->id;
+        // $notification->title = $title;
+        // $notification->content = $description;
+        // $notification->save();
+
+        // $this->notification = $notification;
+        // $this->dateTime = $notification->created_at;
     }
 
     /**

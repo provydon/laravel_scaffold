@@ -49,7 +49,7 @@ $ php artisan serve
 # And you're good to go!
 ```
 
-## After Build Setup (Insace of Database Refresh)
+## After Build Setup (Incase of Database Refresh)
 
 ```bash
 # After you've started the server sometime later in the future during development, if u wish to refresh the database, run

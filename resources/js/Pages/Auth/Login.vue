@@ -51,20 +51,28 @@
           Log in
         </jet-button>
 
-        <inertia-link
-          v-if="canResetPassword"
-          :href="route('password.request')"
-          class="underline text-sm text-gray-600 hover:text-gray-900"
-        >
-          Forgot your password?
-        </inertia-link>
+        <div class="flex justify-around w-full">
+          <inertia-link
+            v-if="canResetPassword"
+            :href="route('password.request')"
+            class="underline text-sm text-gray-600 hover:text-gray-900"
+          >
+            Forgot your password?
+          </inertia-link>
+          <inertia-link
+            :href="route('register')"
+            class="underline text-sm text-gray-600 hover:text-gray-900"
+          >
+            Don't hve an Account?
+          </inertia-link>
+        </div>
       </div>
 
       <div
         class="flex flex-col items-center justify-center mt-4 social-auth-btn"
       >
         <a :href="route('google-redirect')">
-          <img src="/images/btn_google_signin_light_normal_web.png" />
+          <img src="/images/btn_google_signin_light_normal_web@2x.png" />
         </a>
         <!-- <a :href="route('facebook-redirect')">
           <img src="/images/facebook-login.jpeg" />

@@ -7,23 +7,21 @@
 
 #### Laravel jetstream
 
-#### Laravel 8.. and can run on PHP 7.4 or PHP 8
+#### Laravel 8, and can run on PHP 7.4 or PHP 8
 
 #### Login/signup with Google
 
-#### Beautiful admin panel for with Laravel nova setup
+#### Beautiful admin panel with Laravel Nova setup
 
 #### Admin roles/permissions setup for you
 
-#### Email notifications setup for so u can can start sending emails immediately after setting ur env details
+#### Email notifications setup. You can Start sending emails immediately after setting ur env details
 
-#### Already has profile edit/ 2FA auth(optional) changing password and other basic profile edits) setup for u with beautiful ui tru laravel jetstream and Laravel inertia
+#### Already has profile edit, 2FA Auth(optional), changing password and other basic profile edits setup for you with a beautiful UI with laravel jetstream and Inertia.js
 
 #### Already added fontawesome for you
 
 #### Already added toastr for you
-
-#### Laravel jetstream
 
 ## Inital Build Setup
 

@@ -1,9 +1,9 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 # Laravel Scaffold
 
-### Kick start a laravel application with basic tins already setup for you so that you can focus on your business logic
+### Kick start a laravel application with basic things already setup for you so that you can focus on your business logic
 
-### The following has added for you
+### The following features have been added for you
 
 #### Laravel jetstream
 

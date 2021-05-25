@@ -389,6 +389,8 @@ class Action implements JsonSerializable
      *
      * @param  bool  $value
      * @return $this
+     *
+     * @deprecated
      */
     public function availableForEntireResource($value = true)
     {

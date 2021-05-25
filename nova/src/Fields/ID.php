@@ -3,6 +3,7 @@
 namespace Laravel\Nova\Fields;
 
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Util;
 
 class ID extends Field
 {
@@ -99,13 +100,9 @@ class ID extends Field
             }
         }
 
-        $value = parent::resolveAttribute($resource, $attribute);
-
-        if (is_int($value) && $value >= 9007199254740991) {
-            return (string) $value;
-        }
-
-        return $value;
+        return Util::safeInt(
+            parent::resolveAttribute($resource, $attribute)
+        );
     }
 
     /**

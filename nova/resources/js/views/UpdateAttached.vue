@@ -60,6 +60,7 @@
               :options="availableResources"
               :label="'display'"
               :selected="selectedResourceId"
+              :value="selectedResourceId"
             >
               <option value="" disabled selected>
                 {{ __('Choose :field', { field: field.name }) }}

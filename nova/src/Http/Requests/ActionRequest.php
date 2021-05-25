@@ -20,9 +20,14 @@ class ActionRequest extends NovaRequest
     public function action()
     {
         return once(function () {
-            return $this->availableActions()->first(function ($action) {
-                return $action->uriKey() == $this->query('action');
-            }) ?: abort($this->actionExists() ? 403 : 404);
+            $hasResources = ! empty($this->resources);
+
+            return $this->availableActions()
+                        ->filter(function ($action) use ($hasResources) {
+                            return $hasResources ? true : $action->isStandalone();
+                        })->first(function ($action) {
+                            return $action->uriKey() == $this->query('action');
+                        }) ?: abort($this->actionExists() ? 403 : 404);
         });
     }
 

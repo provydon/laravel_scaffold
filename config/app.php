@@ -15,6 +15,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'jwt_token_name' => env('JWT_TOKEN_NAME', 'scaffold'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

@@ -22,5 +22,15 @@ return [
             // 'image' => [new Imageable],
             'password' => 'required|string|min:6',
         ],
+        'forgot-password' => [
+            'email' => 'required|exists:users,email',
+        ],
+
+        // User validations
+        'update-user' => [
+           'first_name' => 'string|max:255',
+            'last_name' => 'string|max:255',
+            'phone' => 'string|max:255|unique:users,phone',
+        ],
     ],
 ];

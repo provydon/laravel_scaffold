@@ -10,6 +10,7 @@ use App\Services\AllServices\FileService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Storage;
 
 class AuthController extends Controller
@@ -88,5 +89,12 @@ class AuthController extends Controller
 
         // Authentication Succeeded
         return Auth::user();
+    }
+
+    public function forgotPassword(Request $request)
+    {
+        Password::sendResetLink($request->all());
+
+        return Helper::apiRes("Reset password link sent to your email");
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 class FileService
 {
 
-    public static function storeFile($file, $folder, $cloud = true)
+    public static function storeFile($file, $folder, $cloud = false)
     {
 
         if ($cloud) {
@@ -18,6 +18,17 @@ class FileService
         }
 
         return $path;
+    }
+
+    public static function deleteFile($path, $cloud = false)
+    {
+        if ($cloud) {
+            Storage::cloud()->delete($path);
+        } else {
+            Storage::delete($path);
+        }
+
+        return;
     }
 }
 

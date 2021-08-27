@@ -49,7 +49,7 @@ class SendMail extends Notification
         return (new MailMessage)
             ->from(config('app.email'), config('app.name'))
             ->subject($this->title)
-            ->line(new HtmlString($this->message . '<br>'))
+            ->line(new HtmlString($this->description. '<br>'))
             ->line('Thank you for using our application!');
     }
 

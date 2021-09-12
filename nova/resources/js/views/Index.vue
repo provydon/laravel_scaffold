@@ -296,6 +296,7 @@
             :via-relationship="viaRelationship"
             :relationship-type="relationshipType"
             :update-selection-status="updateSelectionStatus"
+            :sortable="sortable"
             @order="orderByField"
             @reset-order-by="resetOrderBy"
             @delete="deleteResources"
@@ -417,6 +418,7 @@ export default {
     selectedResources: [],
     selectAllMatchingResources: false,
     allMatchingResourceCount: 0,
+    sortable: true,
 
     deleteModalOpen: false,
 
@@ -601,9 +603,15 @@ export default {
             this.resources = data.resources
             this.softDeletes = data.softDeletes
             this.perPage = data.per_page
-            this.allMatchingResourceCount = data.total
+            this.sortable = data.sortable
 
             this.loading = false
+
+            if (data.total !== null) {
+              this.allMatchingResourceCount = data.total
+            } else {
+              this.getAllMatchingResourceCount()
+            }
 
             Nova.$emit('resources-loaded')
           })
@@ -814,7 +822,11 @@ export default {
         this.resourceResponse = data
         this.resources = [...this.resources, ...data.resources]
 
-        this.allMatchingResourceCount = data.total
+        if (data.total !== null) {
+          this.allMatchingResourceCount = data.total
+        } else {
+          this.getAllMatchingResourceCount()
+        }
 
         Nova.$emit('resources-loaded')
       })

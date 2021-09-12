@@ -536,8 +536,7 @@ abstract class Resource implements ArrayAccess, JsonSerializable, UrlRoutable
      */
     public function isSoftDeleted()
     {
-        return static::softDeletes() &&
-               ! is_null($this->resource->{$this->resource->getDeletedAtColumn()});
+        return static::softDeletes() && $this->resource->trashed();
     }
 
     /**

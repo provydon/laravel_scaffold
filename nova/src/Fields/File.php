@@ -311,8 +311,8 @@ class File extends Field implements StorableContract, DeletableContract, Downloa
             $model,
             $attribute,
             $requestAttribute,
-            $this->disk,
-            $this->storagePath
+            $this->getStorageDisk(),
+            $this->getStorageDir()
         );
 
         if ($result === true) {

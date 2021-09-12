@@ -189,9 +189,15 @@ import {
   Errors,
   PreventsFormAbandonment,
 } from 'laravel-nova'
+import HandlesFormRequest from '@/mixins/HandlesFormRequest'
 
 export default {
-  mixins: [PerformsSearches, TogglesTrashed, PreventsFormAbandonment],
+  mixins: [
+    HandlesFormRequest,
+    PerformsSearches,
+    TogglesTrashed,
+    PreventsFormAbandonment,
+  ],
 
   metaInfo() {
     if (this.relatedResourceLabel) {
@@ -237,7 +243,6 @@ export default {
     field: null,
     softDeletes: false,
     fields: [],
-    validationErrors: new Errors(),
     selectedResource: null,
     selectedResourceId: null,
   }),
@@ -390,10 +395,7 @@ export default {
           this.canLeave = false
         }
 
-        if (error.response.status == 422) {
-          this.validationErrors = new Errors(error.response.data.errors)
-          Nova.error(this.__('There was a problem submitting the form.'))
-        }
+        this.handleOnCreateResponseError(error)
       }
     },
 
@@ -413,10 +415,7 @@ export default {
       } catch (error) {
         this.submittedViaAttachAndAttachAnother = false
 
-        if (error.response.status == 422) {
-          this.validationErrors = new Errors(error.response.data.errors)
-          Nova.error(this.__('There was a problem submitting the form.'))
-        }
+        this.handleOnCreateResponseError(error)
       }
     },
 

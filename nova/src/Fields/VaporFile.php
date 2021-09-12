@@ -223,8 +223,8 @@ class VaporFile extends Field implements StorableContract, DeletableContract, Do
             $model,
             $attribute,
             $requestAttribute,
-            $this->disk,
-            $this->storagePath
+            $this->getStorageDisk(),
+            $this->getStorageDir()
         );
 
         if ($result === true) {

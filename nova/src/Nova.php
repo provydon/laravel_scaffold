@@ -189,6 +189,19 @@ class Nova
     }
 
     /**
+     * Run callback when currently serving Nova.
+     *
+     * @param  callable  $callback
+     * @return mixed
+     */
+    public static function whenServing(callable $callback)
+    {
+        if (app()->bound(NovaRequest::class)) {
+            return $callback(app()->make(NovaRequest::class));
+        }
+    }
+
+    /**
      * Register the Nova routes.
      *
      * @return \Laravel\Nova\PendingRouteRegistration

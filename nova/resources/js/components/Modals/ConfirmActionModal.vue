@@ -64,17 +64,17 @@
             {{ action.cancelButtonText }}
           </button>
 
-          <button
+          <loading-button
             ref="runButton"
             dusk="confirm-action-button"
+            :processing="working"
             :disabled="working"
             type="submit"
             class="btn btn-default"
             :class="action.class"
           >
-            <loader v-if="working" width="30"></loader>
-            <span v-else>{{ action.confirmButtonText }}</span>
-          </button>
+            {{ action.confirmButtonText }}
+          </loading-button>
         </div>
       </div>
     </form>

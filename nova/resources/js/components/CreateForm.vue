@@ -63,10 +63,15 @@ import {
   Minimum,
   InteractsWithResourceInformation,
 } from 'laravel-nova'
+import HandlesFormRequest from '@/mixins/HandlesFormRequest'
 import HandlesUploads from '@/mixins/HandlesUploads'
 
 export default {
-  mixins: [InteractsWithResourceInformation, HandlesUploads],
+  mixins: [
+    InteractsWithResourceInformation,
+    HandlesFormRequest,
+    HandlesUploads,
+  ],
 
   metaInfo() {
     if (this.shouldOverrideMeta && this.resourceInformation) {
@@ -106,7 +111,6 @@ export default {
     submittedViaCreateResource: false,
     fields: [],
     panels: [],
-    validationErrors: new Errors(),
   }),
 
   async created() {
@@ -243,17 +247,7 @@ export default {
             this.canLeave = false
           }
 
-          if (error.response.status == 422) {
-            this.validationErrors = new Errors(error.response.data.errors)
-            Nova.error(this.__('There was a problem submitting the form.'))
-          } else {
-            Nova.error(
-              this.__('There was a problem submitting the form.') +
-                ' "' +
-                error.response.statusText +
-                '"'
-            )
-          }
+          this.handleOnCreateResponseError(error)
         }
       }
 

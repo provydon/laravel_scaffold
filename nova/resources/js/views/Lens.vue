@@ -220,6 +220,7 @@
             :via-relationship="viaRelationship"
             :relationship-type="relationshipType"
             :update-selection-status="updateSelectionStatus"
+            :sortable="true"
             @order="orderByField"
             @reset-order-by="resetOrderBy"
             @delete="deleteResources"

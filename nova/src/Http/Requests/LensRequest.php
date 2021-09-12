@@ -116,6 +116,7 @@ class LensRequest extends NovaRequest
                 $this, $lenResource->resolveFields($this)
             ), function ($payload) use ($lenResource) {
                 $payload['actions'] = collect(array_values($lenResource->actions($this)))
+                        ->filter->shownOnIndex()
                         ->filter->authorizedToSee($this)->values();
 
                 return $payload;

@@ -22,7 +22,7 @@
             @reset="resetOrderBy(field)"
             :resource-name="resourceName"
             :uri-key="field.sortableUriKey"
-            v-if="field.sortable"
+            v-if="sortable && field.sortable"
           >
             {{ field.indexName }}
           </sortable-icon>
@@ -110,6 +110,10 @@ export default {
     },
     actionsEndpoint: {
       default: null,
+    },
+    sortable: {
+      type: Boolean,
+      default: false,
     },
   },
 

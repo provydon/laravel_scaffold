@@ -74,6 +74,7 @@ import PaginationSimple from '@/components/Pagination/PaginationSimple'
 import PanelItem from '@/components/PanelItem'
 import PartitionMetric from '@/components/Metrics/PartitionMetric'
 import Play from '@/components/Icons/Play'
+import LoadingButton from '@/components/LoadingButton'
 import ProgressButton from '@/components/ProgressButton'
 import Refresh from '@/components/Icons/Refresh'
 import ResourcePollingButton from '@/components/ResourcePollingButton'
@@ -178,6 +179,7 @@ Vue.component('pagination-simple', PaginationSimple)
 Vue.component('panel-item', PanelItem)
 Vue.component('form-panel', FormPanel)
 Vue.component('partition-metric', PartitionMetric)
+Vue.component('loading-button', LoadingButton)
 Vue.component('progress-button', ProgressButton)
 Vue.component('resource-index', Index)
 Vue.component('resource-table', ResourceTable)

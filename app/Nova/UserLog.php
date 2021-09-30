@@ -33,9 +33,9 @@ class UserLog extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'name', 'email',
+        'id'
     ];
-    
+
     /**
      * Get the fields displayed by the resource.
      *

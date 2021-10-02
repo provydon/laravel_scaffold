@@ -25,6 +25,15 @@ Route::get('/facebook-redirect', 'SocialAuthController@facebookRedirect')->name(
 Route::get('/facebook-callback', 'SocialAuthController@facebookCallback')->name('facebook-callback');
 
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
+
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+
+    Route::get('/dashboard', function () {
+        return Inertia::render('Dashboard');
+    })->name('dashboard');
+
+    // GroupChat
+    Route::resource('groups', 'GroupController');
+    Route::resource('conversations', 'ConversationController');
+});

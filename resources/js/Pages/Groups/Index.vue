@@ -9,11 +9,27 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <group-chat
-                        v-for="group in groups"
-                        :group="group"
-                        :key="group.id"
-                    ></group-chat>
+                    <div class="p-4 mb-3 pb-8">
+                        <inertia-link
+                            :href="route('groups.create')"
+                            class="btn-dark"
+                        >
+                            Create Group
+                        </inertia-link>
+                    </div>
+                    <div class="p-4 mb-3 pb-8">
+                        <template v-if="groups.length > 0">
+                            <group-chat
+                                v-for="group in groups"
+                                :group="group"
+                                :key="group.id"
+                            ></group-chat>
+                        </template>
+
+                        <template v-else>
+                            <div>No Groups Yet</div>
+                        </template>
+                    </div>
                 </div>
             </div>
         </div>
@@ -21,11 +37,11 @@
 </template>
 
 <script>
-import AppLayout from "@/Layouts/AppLayout";
 import Groupchat from "./Chat.vue";
+import JetButton from "@/Jetstream/Button";
 
 export default {
-    components: { Groupchat, AppLayout },
+    components: { Groupchat },
     props: ["initialGroups", "user"],
     data() {
         return {
@@ -34,7 +50,7 @@ export default {
     },
     mounted() {
         this.groups = this.initialGroups;
-        Bus.$on("groupCreated", (group) => {
+        emitter.on("groupCreated", (group) => {
             this.groups.push(group);
         });
         this.listenForNewGroups();
@@ -49,5 +65,6 @@ export default {
             );
         },
     },
+    mounted() {},
 };
 </script>

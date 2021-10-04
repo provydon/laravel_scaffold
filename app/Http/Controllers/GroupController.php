@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\GroupCreated;
 use App\Models\Group;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -31,7 +32,8 @@ class GroupController extends Controller
      */
     public function create()
     {
-        //
+        $data['initialUsers'] = User::all();
+        return Inertia::render('Groups/Create',$data);
     }
 
     /**

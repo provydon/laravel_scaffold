@@ -9,8 +9,17 @@ class Group extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+    ];
+
     public function users()
     {
         return $this->belongsToMany(User::class);
+    }
+
+    public function conversations()
+    {
+        return $this->hasMany(Conversation::class);
     }
 }

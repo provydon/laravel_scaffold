@@ -9,6 +9,12 @@ class Conversation extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'message',
+        'group_id',
+        'user_id',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

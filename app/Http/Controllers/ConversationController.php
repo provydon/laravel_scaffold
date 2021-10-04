@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Events\NewMessage;
 use App\Models\Conversation;
+use App\Models\Group;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class ConversationController extends Controller
 {
@@ -13,9 +16,27 @@ class ConversationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $user = Auth::user();
+        $group = Group::find($request->query('group_id'));
+        // $group = Group::where('id', $request->query('group_id'))
+        //     ->with('users')
+        //     ->with('conversations', function ($query) {
+        //         $query->with('user');
+        //     });
+
+            $group->load('users','conversations','conversations.user');
+            // $group->load('conversations', function ($query) {
+            //     $query->with('user');
+            // });
+
+            // dd($group);
+
+
+        $data['user'] = $user;
+        $data['group'] = $group;
+        return Inertia::render('Groups/Chat', $data);
     }
 
     /**
@@ -36,17 +57,21 @@ class ConversationController extends Controller
      */
     public function store(Request $request)
     {
-        $conversation = Conversation::create([
-            'message' => request('message'),
-            'group_id' => request('group_id'),
-            'user_id' => auth()->user()->id,
-        ]);
-
-        $conversation = $conversation->load('user');
+        if (request('message')) {
+            # code...
+            $conversation = Conversation::create([
+                'message' => request('message'),
+                'group_id' => request('group_id'),
+                'user_id' => auth()->user()->id,
+            ]);
     
-        broadcast(new NewMessage($conversation))->toOthers();
+            $conversation = $conversation->load('user');
     
-        return $conversation;
+            broadcast(new NewMessage($conversation))->toOthers();
+    
+            return $conversation;
+        }
+        return;
     }
 
     /**

@@ -25,5 +25,17 @@ class UserSeeder extends Seeder
         ]);
 
         $new_user->roles()->attach(1);
+
+
+        $new_user = User::factory()->create([
+            'name' => 'Micheal Owen',
+            'first_name' => 'Micheal',
+            'last_name' => 'Owen',
+            'is_admin' => true,
+            'email' => 'owen@reftek.co',
+            'password' => bcrypt('favour007')
+        ]);
+
+        $new_user->roles()->attach(1);
     }
 }

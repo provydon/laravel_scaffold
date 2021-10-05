@@ -65,7 +65,7 @@ class ConversationController extends Controller
                 'user_id' => auth()->user()->id,
             ]);
     
-            $conversation = $conversation->load('user');
+            $conversation->load('user');
     
             broadcast(new NewMessage($conversation))->toOthers();
     

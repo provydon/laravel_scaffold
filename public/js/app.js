@@ -19161,9 +19161,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       Echo["private"]("groups." + this.group.id).listen("NewMessage", function (e) {
-        console.log('new msg: ', e);
-
-        _this2.conversations.push(e);
+        // console.log("new msg: ", e);
+        // console.log('conversations: ',this.conversations);
+        _this2.conversations.push(e.conversation);
       });
     }
   }
@@ -19183,11 +19183,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["initialUsers"],
+  props: ["initialUsers", "initialUserIds"],
   data: function data() {
     return {
       name: "",
-      users: []
+      users: [],
+      userIds: this.initialUserIds
     };
   },
   methods: {
@@ -19196,12 +19197,10 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post("/groups", {
         name: this.name,
-        users: this.users
+        users: this.initialUserIds
       }).then(function (response) {
         _this.name = "";
-        _this.users = [];
-
-        _this.$emitter.emit("groupCreated", response.data);
+        _this.users = []; // this.$emitter.emit("groupCreated", response.data);
 
         _this.$inertia.get(route("conversations.index", {
           group_id: response.data.id
@@ -23409,21 +23408,24 @@ var _hoisted_6 = {
   "class": "panel-body chat-panel"
 };
 var _hoisted_7 = {
-  "class": "chat"
+  "class": "chat flex flex-col"
 };
 var _hoisted_8 = {
-  "class": "header"
+  "class": "chat-body clearfix"
 };
 var _hoisted_9 = {
-  "class": "primary-font"
+  "class": "header"
 };
 var _hoisted_10 = {
-  "class": "panel-footer"
+  "class": "primary-font"
 };
 var _hoisted_11 = {
-  "class": "input-group"
+  "class": "panel-footer"
 };
 var _hoisted_12 = {
+  "class": "input-group"
+};
+var _hoisted_13 = {
   "class": "input-group-btn"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -23443,21 +23445,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("ul", _hoisted_7, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.conversations, function (conversation, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("li", {
       key: index,
-      "class": "flex"
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <span class=\"chat-img pull-left\">\n                            <img src=\"http://placehold.it/50/55C1E7/fff&text=U\" alt=\"User Avatar\" class=\"img-circle\" />\n                        </span> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-      "class": ["chat-body clearfix w-1/2", {
+      "class": ["w-3/4", {
         'justify-end': conversation.user.id == $props.user.id
       }]
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("strong", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(conversation.user.name), 1
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <span class=\"chat-img pull-left\">\n                            <img src=\"http://placehold.it/50/55C1E7/fff&text=U\" alt=\"User Avatar\" class=\"img-circle\" />\n                        </span> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("strong", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(conversation.user.name), 1
     /* TEXT */
     )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(conversation.message), 1
     /* TEXT */
-    )], 2
+    )])], 2
     /* CLASS */
-    )]);
+    );
   }), 128
   /* KEYED_FRAGMENT */
-  ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+  ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
     required: "",
     id: "btn-input",
     type: "text",
@@ -23472,7 +23472,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     autofocus: ""
   }, null, 544
   /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.message]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.message]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
     "class": "btn-dark",
     id: "btn-chat",
     onClick: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {

@@ -21,22 +21,19 @@
                 :id="'collapseOne-' + group.id"
             >
                 <div class="panel-body chat-panel">
-                    <ul class="chat">
+                    <ul class="chat flex flex-col">
                         <li
                             v-for="(conversation, index) in conversations"
                             :key="index"
-                            class="flex"
+                            class="w-3/4"
+                            :class="{
+                                'justify-end': conversation.user.id == user.id,
+                            }"
                         >
                             <!-- <span class="chat-img pull-left">
                             <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
                         </span> -->
-                            <div
-                                class="chat-body clearfix w-1/2"
-                                :class="{
-                                    'justify-end':
-                                        conversation.user.id == user.id,
-                                }"
-                            >
+                            <div class="chat-body clearfix">
                                 <div class="header">
                                     <strong class="primary-font">{{
                                         conversation.user.name
@@ -106,8 +103,9 @@ export default {
             Echo.private("groups." + this.group.id).listen(
                 "NewMessage",
                 (e) => {
-                    console.log('new msg: ',e);
-                    this.conversations.push(e);
+                    // console.log("new msg: ", e);
+                    // console.log('conversations: ',this.conversations);
+                    this.conversations.push(e.conversation);
                 }
             );
         },

@@ -61,21 +61,25 @@
 
 <script>
 export default {
-    props: ["initialUsers"],
+    props: ["initialUsers", "initialUserIds"],
     data() {
         return {
             name: "",
             users: [],
+            userIds: this.initialUserIds,
         };
     },
     methods: {
         createGroup() {
             axios
-                .post("/groups", { name: this.name, users: this.users })
+                .post("/groups", {
+                    name: this.name,
+                    users: this.initialUserIds,
+                })
                 .then((response) => {
                     this.name = "";
                     this.users = [];
-                    this.$emitter.emit("groupCreated", response.data);
+                    // this.$emitter.emit("groupCreated", response.data);
                     this.$inertia.get(
                         route("conversations.index", {
                             group_id: response.data.id,

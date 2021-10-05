@@ -32,7 +32,9 @@ class GroupController extends Controller
      */
     public function create()
     {
-        $data['initialUsers'] = User::all();
+        $user = Auth::user();
+        $data['initialUsers'] = User::where('id','!=',$user->id)->get();
+        $data['initialUserIds'] = User::where('id','!=',$user->id)->pluck('id')->toArray();
         return Inertia::render('Groups/Create',$data);
     }
 
@@ -47,6 +49,7 @@ class GroupController extends Controller
         $group = Group::create(['name' => request('name')]);
     
         $users = collect(request('users'));
+
         $users->push(auth()->user()->id);
     
         $group->users()->attach($users);

@@ -20,20 +20,7 @@ class ConversationController extends Controller
     {
         $user = Auth::user();
         $group = Group::find($request->query('group_id'));
-        // $group = Group::where('id', $request->query('group_id'))
-        //     ->with('users')
-        //     ->with('conversations', function ($query) {
-        //         $query->with('user');
-        //     });
-
-            $group->load('users','conversations','conversations.user');
-            // $group->load('conversations', function ($query) {
-            //     $query->with('user');
-            // });
-
-            // dd($group);
-
-
+        $group->load('users','conversations','conversations.user');
         $data['user'] = $user;
         $data['group'] = $group;
         return Inertia::render('Groups/Chat', $data);

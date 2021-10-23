@@ -46,7 +46,7 @@ class UserLog extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            BelongsTo::make('User')->rules('required'),
+            BelongsTo::make('User')->searchable()->rules('required'),
             DateTime::make('Time', 'created_at')->format(' HH:MM A,  DD-MMM-YYYY'),
         ];
     }

@@ -7,6 +7,7 @@ use App\Nova\Metrics\Users\UsersPerDay;
 use App\Nova\Metrics\Users\UsersReturnedToday;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
@@ -52,6 +53,8 @@ class User extends Resource
     {
         return [
             ID::make()->sortable(),
+
+            DateTime::make('Date', 'created_at')->format('DD-MMM-YYYY, hh:mm:ssa')->hideWhenUpdating(),
 
             Gravatar::make()->maxWidth(50),
 
@@ -102,7 +105,8 @@ class User extends Resource
     public function filters(Request $request)
     {
         return [
-            new Filters\FilterDate
+            // new Filters\FilterDate,
+            new \CompanyApi\CustomDateFilter\CustomDateFilter
         ];
     }
 

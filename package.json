@@ -7,7 +7,10 @@
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
-        "production": "mix --production"
+        "production": "mix --production",
+        "deploy": "npm run production && git add . && git commit -a -m 'update' && git push",
+        "build-custom-date-filter": "cd nova-components/CustomDateFilter && npm run dev",
+        "build-custom-date-filter-prod": "cd nova-components/CustomDateFilter && npm run prod"
     },
     "devDependencies": {
         "@inertiajs/inertia": "^0.8.4",
@@ -17,6 +20,8 @@
         "@tailwindcss/typography": "^0.3.0",
         "@vue/compiler-sfc": "^3.0.5",
         "axios": "^0.21",
+        "browser-sync": "^2.27.5",
+        "browser-sync-webpack-plugin": "^2.3.0",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",

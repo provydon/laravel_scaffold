@@ -63,7 +63,7 @@
             :href="route('register')"
             class="underline text-sm text-gray-600 hover:text-gray-900"
           >
-            Don't hve an Account?
+            Don't have an Account?
           </inertia-link>
         </div>
       </div>

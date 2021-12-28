@@ -77,7 +77,7 @@ class User extends Resource
 
             RoleBooleanGroup::make('Roles'),
 
-            PermissionBooleanGroup::make('Permissions'),
+            // PermissionBooleanGroup::make('Permissions'),
         ];
     }
 

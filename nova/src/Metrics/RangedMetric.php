@@ -31,8 +31,7 @@ abstract class RangedMetric extends Metric
     /**
      * Set the default range.
      *
-     * @param string $key
-     *
+     * @param  string  $key
      * @return $this
      */
     public function defaultRange($key)
@@ -47,6 +46,7 @@ abstract class RangedMetric extends Metric
      *
      * @return array
      */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         return array_merge(parent::jsonSerialize(), [

@@ -230,7 +230,7 @@ trait PerformsValidation
     protected static function formatRules(NovaRequest $request, array $rules)
     {
         $replacements = array_filter([
-            '{{resourceId}}' => str_replace(['\'', '"', ',', '\\'], '', $request->resourceId),
+            '{{resourceId}}' => str_replace(['\'', '"', ',', '\\'], '', $request->resourceId ?? ''),
         ]);
 
         if (empty($replacements)) {
@@ -285,7 +285,7 @@ trait PerformsValidation
     /**
      * Map field attributes to field names.
      *
-     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return \Illuminate\Support\Collection
      */
     private static function attributeNamesForFields(NovaRequest $request)

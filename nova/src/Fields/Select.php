@@ -59,6 +59,7 @@ class Select extends Field
      * Enable subtitles within the related search results.
      *
      * @return $this
+     *
      * @throws \Exception
      */
     public function withSubtitles()
@@ -71,6 +72,7 @@ class Select extends Field
      *
      * @return array
      */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         return with(app(NovaRequest::class), function ($request) {

@@ -335,7 +335,7 @@ class Nova
     /**
      * Get the available resource groups for the given request.
      *
-     * @param  Request $request
+     * @param  Request  $request
      * @return \Illuminate\Support\Collection
      */
     public static function groups(Request $request)
@@ -349,7 +349,7 @@ class Nova
     /**
      * Get the grouped resources available for the given request.
      *
-     * @param  Request $request
+     * @param  Request  $request
      * @return array
      */
     public static function groupedResources(Request $request)
@@ -862,7 +862,7 @@ class Nova
     /**
      * Register the given theme CSS file with Nova.
      *
-     * @param string $publicPath
+     * @param  string  $publicPath
      * @return static
      */
     public static function theme($publicPath)

@@ -258,6 +258,7 @@ class Action implements JsonSerializable
      *
      * @param  \Laravel\Nova\Http\Requests\ActionRequest  $request
      * @return mixed
+     *
      * @throws MissingActionHandlerException
      */
     public function handleRequest(ActionRequest $request)
@@ -308,7 +309,6 @@ class Action implements JsonSerializable
      *
      * @param  \Laravel\Nova\Fields\ActionFields  $fields
      * @param  array  $results
-     *
      * @return mixed
      */
     public function handleResult(ActionFields $fields, $results)
@@ -733,6 +733,7 @@ class Action implements JsonSerializable
      *
      * @return array
      */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         $request = app(NovaRequest::class);

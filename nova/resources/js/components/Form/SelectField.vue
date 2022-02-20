@@ -4,6 +4,7 @@
       <!-- Search Input -->
       <search-input
         v-if="!isReadonly && isSearchable"
+        :data-testid="`${field.attribute}-search-input`"
         @input="performSearch"
         @clear="clearSelection"
         @selected="selectOption"

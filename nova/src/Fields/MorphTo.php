@@ -530,7 +530,7 @@ class MorphTo extends Field implements RelatableField
     /**
      * Set the default relation resource class to be selected.
      *
-     * @param \Closure|string $resourceClass
+     * @param  \Closure|string  $resourceClass
      * @return $this
      */
     public function defaultResource($resourceClass)
@@ -555,7 +555,7 @@ class MorphTo extends Field implements RelatableField
                 $class = $this->defaultResourceCallable;
             }
 
-            if (class_exists($class)) {
+            if (! empty($class) && class_exists($class)) {
                 return $class::uriKey();
             }
         }
@@ -566,6 +566,7 @@ class MorphTo extends Field implements RelatableField
      *
      * @return array
      */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         $resourceClass = $this->resourceClass;

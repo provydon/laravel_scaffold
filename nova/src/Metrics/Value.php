@@ -121,7 +121,7 @@ abstract class Value extends RangedMetric
             array_map(function ($datetime) {
                 return $this->asQueryDatetime($datetime);
             }, $this->previousRange($request->range, $timezone))
-        )->{$function}($column), $this->precision);
+        )->{$function}($column) ?? 0, $this->precision);
 
         return $this->result(
             round(with(clone $query)->whereBetween(
@@ -129,7 +129,7 @@ abstract class Value extends RangedMetric
                 array_map(function ($datetime) {
                     return $this->asQueryDatetime($datetime);
                 }, $this->currentRange($request->range, $timezone))
-            )->{$function}($column), $this->precision)
+            )->{$function}($column) ?? 0, $this->precision)
         )->previous($previousValue);
     }
 
@@ -176,8 +176,7 @@ abstract class Value extends RangedMetric
     /**
      * Calculate the previous quarter range.
      *
-     * @param string $timezone
-     *
+     * @param  string  $timezone
      * @return array
      */
     protected function previousQuarterRange($timezone)
@@ -232,7 +231,6 @@ abstract class Value extends RangedMetric
      * Calculate the previous quarter range.
      *
      * @param  string  $timezone
-     *
      * @return array
      */
     protected function currentQuarterRange($timezone)

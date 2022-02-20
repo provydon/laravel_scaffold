@@ -81,7 +81,8 @@ export default {
       this.flatpickr = flatpickr(this.$refs.datePicker, {
         enableTime: this.enableTime,
         enableSeconds: this.enableSeconds,
-        onClose: this.onChange,
+        onOpen: this.onOpen,
+        onClose: this.onClose,
         onChange: this.onChange,
         dateFormat: this.dateFormat,
         altInput: true,
@@ -93,6 +94,15 @@ export default {
         minuteIncrement: this.minuteIncrement,
         locale: { firstDayOfWeek: this.firstDayOfWeek },
       })
+    },
+
+    onOpen(event) {
+      Nova.$emit('datepicker-opened', event)
+    },
+
+    onClose(event) {
+      this.onChange(event)
+      Nova.$emit('datepicker-closed', event)
     },
 
     onChange(event) {

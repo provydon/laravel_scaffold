@@ -96,7 +96,7 @@ class BooleanGroup extends Field
     /**
      * Set the text to be used when there are no booleans to show.
      *
-     * @param string $text
+     * @param  string  $text
      * @return $this
      */
     public function noValueText($text)
@@ -127,6 +127,7 @@ class BooleanGroup extends Field
      *
      * @return array
      */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         return array_merge(parent::jsonSerialize(), [

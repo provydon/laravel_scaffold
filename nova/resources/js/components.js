@@ -57,6 +57,7 @@ import HelpText from '@/components/Form/HelpText'
 import HelpIcon from '@/components/Icons/Help'
 import Icon from '@/components/Icons/Icon'
 import Image from '@/components/Icons/Editor/Image'
+import IndexErrorDialog from '@/components/IndexErrorDialog'
 import Index from './views/Index'
 import Italic from '@/components/Icons/Editor/Italic'
 import Label from '@/components/Form/Label'
@@ -167,6 +168,7 @@ Vue.component('icon-search', Search)
 Vue.component('icon-view', View)
 Vue.component('icon-menu', Menu)
 Vue.component('inline-action-selector', InlineActionSelector)
+Vue.component('index-error-dialog', IndexErrorDialog)
 Vue.component('lens', Lens)
 Vue.component('lens-selector', LensSelector)
 Vue.component('loader', Loader)

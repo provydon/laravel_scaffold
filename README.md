@@ -11,7 +11,7 @@
 
 #### Login/signup with Google
 
-#### Beautiful admin panel with Laravel Nova setup
+#### Beautiful admin panel with Laravel Nova setup (You have to buy and install Laravel Nova for this at https://nova.laravel.com/)
 
 #### Admin roles/permissions setup for you
 

@@ -7,7 +7,7 @@
 
 #### Laravel jetstream
 
-#### Laravel 9, and can run on PHP 7.4 or PHP 8
+#### Laravel 9, and can run on PHP 8.1
 
 #### Login/signup with Google
 
@@ -24,8 +24,6 @@
 #### Already added toastr for you
 
 ## Inital Build Setup
-
-#### Minimum PHP version for this scaffold is PHP 8.1
 
 ```bash
 # install dependencies

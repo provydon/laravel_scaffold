@@ -25,12 +25,17 @@
 
 ## Inital Build Setup
 
+#### Minimum PHP version for this scaffold is PHP 8.1
+
 ```bash
 # install dependencies
 $ composer install
 
 # autoload dependencies
 $ composer dump-autoload
+
+# install node dependencies
+$ npm install
 
 # create a .env file in the root of the project, and copy and paste the contents of .env.example into it and save it.
 

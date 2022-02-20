@@ -7,7 +7,7 @@
 
 #### Laravel jetstream
 
-#### Laravel 8, and can run on PHP 7.4 or PHP 8
+#### Laravel 9, and can run on PHP 7.4 or PHP 8
 
 #### Login/signup with Google
 

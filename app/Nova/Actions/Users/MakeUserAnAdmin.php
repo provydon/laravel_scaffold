@@ -11,6 +11,7 @@ use Illuminate\Support\Collection;
 use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;
 use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class MakeUserAnAdmin extends Action
 {
@@ -47,7 +48,7 @@ class MakeUserAnAdmin extends Action
      *
      * @return array
      */
-    public function fields()
+    public function fields(NovaRequest $request)
     {
         $roles = Role::all();
         $roles_array = [];

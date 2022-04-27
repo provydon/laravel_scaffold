@@ -2,9 +2,10 @@
 
 namespace App\Nova\Filters;
 
-use Ampeco\Filters\DateRangeFilter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Ampeco\Filters\DateRangeFilter;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class FilterDate extends DateRangeFilter
 {
@@ -23,7 +24,7 @@ class FilterDate extends DateRangeFilter
      * @param  mixed  $value
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function apply(Request $request, $query, $value)
+    public function apply(NovaRequest $request, $query, $value)
     {
         $from = Carbon::parse($value[0])->startOfDay();
         $to = null;
@@ -40,7 +41,7 @@ class FilterDate extends DateRangeFilter
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function options(Request $request)
+    public function options(NovaRequest $request)
     {
         return [];
     }

@@ -24,11 +24,15 @@ class AppSettingPolicy
     {
 
         $user = Auth::user();
-        foreach ($user->roles as $item) {
-            foreach ($item->permissions as $key => $value) {
-                array_push($this->permissions, $value->name);
+        if (isset($user)) {
+            # code...
+            foreach ($user->roles as $item) {
+                foreach ($item->permissions as $key => $value) {
+                    array_push($this->permissions,$value->name);
+                }
             }
         }
+
 
         if (in_array("settings_access", $this->permissions)) {
             $this->access = true;

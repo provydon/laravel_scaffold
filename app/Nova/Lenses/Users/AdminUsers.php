@@ -2,15 +2,16 @@
 
 namespace App\Nova\Lenses\Users;
 
+use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Lenses\Lens;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Gravatar;
-use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\LensRequest;
-use Laravel\Nova\Lenses\Lens;
-use Vyuldashev\NovaPermission\PermissionBooleanGroup;
+use Laravel\Nova\Http\Requests\NovaRequest;
 use Vyuldashev\NovaPermission\RoleBooleanGroup;
+use Vyuldashev\NovaPermission\PermissionBooleanGroup;
 
 class AdminUsers extends Lens
 {
@@ -34,7 +35,7 @@ class AdminUsers extends Lens
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function fields(Request $request)
+    public function fields(NovaRequest $request)
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
@@ -65,7 +66,7 @@ class AdminUsers extends Lens
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function cards(Request $request)
+    public function cards(NovaRequest $request)
     {
         return [];
     }
@@ -76,7 +77,7 @@ class AdminUsers extends Lens
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function filters(Request $request)
+    public function filters(NovaRequest $request)
     {
         return [];
     }
@@ -87,7 +88,7 @@ class AdminUsers extends Lens
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function actions(Request $request)
+    public function actions(NovaRequest $request)
     {
         return parent::actions($request);
     }

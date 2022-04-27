@@ -2,18 +2,13 @@
 
 namespace App\Nova;
 
-use App\Nova\Metrics\Users\NewUsers;
-use App\Nova\Metrics\Users\UsersPerDay;
-use App\Nova\Metrics\Users\UsersReturnedToday;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\DateTime;
+use Illuminate\Validation\Rules;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
-use Vyuldashev\NovaPermission\PermissionBooleanGroup;
-use Vyuldashev\NovaPermission\RoleBooleanGroup;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class User extends Resource
 {
@@ -29,10 +24,7 @@ class User extends Resource
      *
      * @var string
      */
-    public function title()
-    {
-        return $this->first_name . ' ' . $this->last_name;
-    }
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -46,15 +38,13 @@ class User extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
-    public function fields(Request $request)
+    public function fields(NovaRequest $request)
     {
         return [
             ID::make()->sortable(),
-
-            DateTime::make('Date', 'created_at')->format('DD-MMM-YYYY, hh:mm:ssa')->hideWhenUpdating(),
 
             Gravatar::make()->maxWidth(50),
 
@@ -70,84 +60,52 @@ class User extends Resource
 
             Password::make('Password')
                 ->onlyOnForms()
-                ->creationRules('required', 'string', 'min:8')
-                ->updateRules('nullable', 'string', 'min:8'),
-
-            Boolean::make('Is Admin', 'is_admin'),
-
-            RoleBooleanGroup::make('Roles'),
-
-            // PermissionBooleanGroup::make('Permissions'),
+                ->creationRules('required', Rules\Password::defaults())
+                ->updateRules('nullable', Rules\Password::defaults()),
         ];
     }
 
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
-    public function cards(Request $request)
+    public function cards(NovaRequest $request)
     {
-        return [
-            (new NewUsers())->help('This is all new users in the database.')->width("1/3"),
-            (new UsersPerDay())->help('Trend of  all new users in the database.')->width("1/3"),
-            (new UsersReturnedToday())->width("1/3"),
-        ];
+        return [];
     }
 
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
-    public function filters(Request $request)
+    public function filters(NovaRequest $request)
     {
-        return [
-            // new Filters\FilterDate,
-            new \CompanyApi\CustomDateFilter\CustomDateFilter
-        ];
+        return [];
     }
 
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
-    public function lenses(Request $request)
+    public function lenses(NovaRequest $request)
     {
-        return [
-            new Lenses\Users\AdminUsers,
-        ];
+        return [];
     }
 
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
-    public function actions(Request $request)
+    public function actions(NovaRequest $request)
     {
-        return [
-            (new Actions\Users\EmailUser)
-                ->canSee(function ($request) {
-                    return in_array("users_edit", $request->user()->getAllPermissions()->pluck('name')->all());
-                })
-                ->confirmButtonText('Send')
-                ->showOnTableRow(),
-
-            (new Actions\Users\MakeUserAnAdmin)
-                ->confirmText('Are you sure you want to make this user(s) an/all Admin(s)?')
-                ->confirmButtonText('Make')
-                ->showOnTableRow(),
-
-            (new Actions\Users\RemoveUserAsAdmin)
-                ->confirmText('Are you sure you want to REVOME this user(s) as Admin(s)?')
-                ->confirmButtonText('Revome')
-                ->showOnTableRow(),
-        ];
+        return [];
     }
 }

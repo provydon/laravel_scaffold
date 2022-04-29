@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 
 
 // Logged In Routes
-Route::middleware(['auth:api'])->group(function () {
+Route::middleware(['auth:sanctum'])->group(function () {
 
      // User Routes
      Route::get('user', 'Api\UserController@index');

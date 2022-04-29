@@ -19,7 +19,7 @@ class AuthController extends Controller
     {
         $user = $this->authenticate($request->email, $request->password);
         $data = [
-            "token" => $user->createToken(config('app.jwt_token_name'))->accessToken,
+            "token" => $user->createToken(config('app.key'))->plainTextToken,
             "user" => new ResourcesUser($user),
         ];
 
@@ -70,7 +70,7 @@ class AuthController extends Controller
 
         $user = $this->authenticate($request->email, $request->password);
         $data = [
-            "token" => $user->createToken(config('app.jwt_token_name'))->accessToken,
+            "token" => $user->createToken(config('app.key'))->plainTextToken,
             "user" => new ResourcesUser($user),
         ];
 

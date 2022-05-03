@@ -20,6 +20,7 @@
         "laravel/horizon": "^5.7",
         "laravel/jetstream": "^2.3",
         "laravel/nova": "~4.2.7",
+        "laravel/nova-log-viewer": "^0.1.1",
         "laravel/sanctum": "^2.15",
         "laravel/socialite": "^5.2",
         "laravel/tinker": "^2.5",

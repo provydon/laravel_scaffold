@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "251b8d7629d7297ae7b80045c686c1d2",
+    "content-hash": "70e4849d17e5cf08d6a1c45adf8477ff",
     "packages": [
         {
             "name": "ampeco/nova-date-range-filter",
@@ -2539,6 +2539,50 @@
                 "source": "https://github.com/laravel/nova/tree/v4.2.7"
             },
             "time": "2022-04-26T22:34:25+00:00"
+        },
+        {
+            "name": "laravel/nova-log-viewer",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/nova-log-viewer.git",
+                "reference": "57230b47a8da4da68d08a45d5694e8769767c935"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/nova-log-viewer/zipball/57230b47a8da4da68d08a45d5694e8769767c935",
+                "reference": "57230b47a8da4da68d08a45d5694e8769767c935",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Nova\\LogViewer\\ToolServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Nova\\LogViewer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova tool for viewing your application logs.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "source": "https://github.com/laravel/nova-log-viewer/tree/v0.1.1"
+            },
+            "time": "2022-05-02T17:28:40+00:00"
         },
         {
             "name": "laravel/sanctum",

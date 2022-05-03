@@ -23,6 +23,7 @@ use Laravel\Nova\Menu\Menu;
 use Laravel\Nova\Menu\MenuItem;
 use Laravel\Nova\Menu\MenuSection;
 use Illuminate\Http\Request;
+use Laravel\Nova\LogViewer\LogViewer;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -48,6 +49,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                     MenuItem::make('Permissions')
                         ->path('/resources/permissions')
                 ])->icon('lock-closed')->collapsable(),
+                MenuSection::make("Logs")->icon("desktop-computer")->path('/logs'),
             ];
         });
     }
@@ -117,6 +119,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             \Vyuldashev\NovaPermission\NovaPermissionTool::make(),
+            new LogViewer,
+
             // new CollapsibleResourceManager([
             //     'disable_default_resource_manager' => true, // default
             //     'navigation' => [

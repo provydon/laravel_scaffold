@@ -74,26 +74,26 @@
             <a href="/" class="nav-link">Home</a>
 
             <div v-if="canLogin" class="hidden lg:flex">
-              <inertia-link
+              <Link
                 v-if="$page.props.user"
                 href="/dashboard"
                 class="nav-link"
               >
                 Dashboard
-              </inertia-link>
+              </Link>
 
               <template v-else>
-                <inertia-link :href="route('login')" class="nav-link">
+                <Link :href="route('login')" class="nav-link">
                   Login
-                </inertia-link>
+                </Link>
 
-                <inertia-link
+                <Link
                   v-if="canRegister"
                   :href="route('register')"
                   class="nav-link"
                 >
                   Register
-                </inertia-link>
+                </Link>
               </template>
             </div>
           </div>
@@ -113,26 +113,26 @@
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
         <a href="/" class="nav-link">Home</a>
         <div v-if="canLogin" class="flex flex-col lg:flex-row">
-          <inertia-link
+          <Link
             v-if="$page.props.user"
             href="/dashboard"
             class="nav-link"
           >
             Dashboard
-          </inertia-link>
+          </Link>
 
           <template v-else>
-            <inertia-link :href="route('login')" class="nav-link">
+            <Link :href="route('login')" class="nav-link">
               Login
-            </inertia-link>
+            </Link>
 
-            <inertia-link
+            <Link
               v-if="canRegister"
               :href="route('register')"
               class="nav-link"
             >
               Register
-            </inertia-link>
+            </Link>
           </template>
         </div>
       </div>

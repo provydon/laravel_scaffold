@@ -1,9 +1,10 @@
 require('./bootstrap');
 
 // Import modules...
-import { createApp, h } from 'vue';
-import { App as InertiaApp, plugin as InertiaPlugin } from '@inertiajs/inertia-vue3';
+import { App as InertiaApp, Link, plugin as InertiaPlugin } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
+import { createApp, h } from 'vue';
+import AppGlobalMethods from './Plugins/AppGlobalMethods';
 
 const el = document.getElementById('app');
 
@@ -14,8 +15,10 @@ createApp({
             resolveComponent: (name) => require(`./Pages/${name}`).default,
         }),
 })
+    .component('Link', Link)
     .mixin({ methods: { route } })
     .use(InertiaPlugin)
+    .use(AppGlobalMethods)
     .mount(el);
 
 InertiaProgress.init({ color: '#4B5563' });

@@ -52,19 +52,19 @@
         </jet-button>
 
         <div class="flex justify-around w-full">
-          <inertia-link
+          <Link
             v-if="canResetPassword"
             :href="route('password.request')"
             class="underline text-sm text-gray-600 hover:text-gray-900"
           >
             Forgot your password?
-          </inertia-link>
-          <inertia-link
+          </Link>
+          <Link
             :href="route('register')"
             class="underline text-sm text-gray-600 hover:text-gray-900"
           >
             Don't have an Account?
-          </inertia-link>
+          </Link>
         </div>
       </div>
 

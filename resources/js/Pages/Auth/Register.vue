@@ -96,12 +96,12 @@
           Register
         </jet-button>
 
-        <inertia-link
+        <Link
           :href="route('login')"
           class="underline text-sm text-gray-600 hover:text-gray-900"
         >
           Already registered?
-        </inertia-link>
+        </Link>
       </div>
       <div
         class="flex flex-col items-center justify-center mt-4 social-auth-btn"

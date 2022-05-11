@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9dbfe0400acac05b4281cf7c4f780edc",
+    "content-hash": "022fbe72318e9b6aedac1823bc96112f",
     "packages": [
         {
             "name": "ampeco/nova-date-range-filter",
@@ -2436,23 +2436,23 @@
         },
         {
             "name": "laravel/nova",
-            "version": "4.4.2",
+            "version": "4.5.1",
             "source": {
                 "type": "git",
                 "url": "git@github.com:laravel/nova.git",
-                "reference": "6a9b945bb6c6031e194ad880fa95581ffa3294f5"
+                "reference": "5db46b3bea399a2d35f63b9207bb1eb772af2a58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-6a9b945bb6c6031e194ad880fa95581ffa3294f5-zip-5aa267.zip",
-                "reference": "6a9b945bb6c6031e194ad880fa95581ffa3294f5",
-                "shasum": "72e55cca928a970612d64eec944e11490a410ddf"
+                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-5db46b3bea399a2d35f63b9207bb1eb772af2a58-zip-a9db7f.zip",
+                "reference": "5db46b3bea399a2d35f63b9207bb1eb772af2a58",
+                "shasum": "e40e83e95a9c39cc38823113b2330e9261c109d6"
             },
             "require": {
                 "brick/money": "^0.5.0",
                 "doctrine/dbal": "^2.13.3|^3.1.2",
                 "illuminate/support": "^8.83.4|^9.3.1",
-                "inertiajs/inertia-laravel": "^0.4.5|^0.5.2",
+                "inertiajs/inertia-laravel": "^0.4.5|^0.5.2|^0.6.0",
                 "laravel/ui": "^3.3",
                 "nesbot/carbon": "^2.53.1",
                 "php": "^7.3|^8.0",
@@ -2539,9 +2539,9 @@
                 "laravel"
             ],
             "support": {
-                "source": "https://github.com/laravel/nova/tree/v4.4.2"
+                "source": "https://github.com/laravel/nova/tree/v4.5.1"
             },
-            "time": "2022-05-05T20:21:51+00:00"
+            "time": "2022-05-10T21:10:06+00:00"
         },
         {
             "name": "laravel/nova-log-viewer",

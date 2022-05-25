@@ -22,8 +22,8 @@ use Laravel\Nova\NovaApplicationServiceProvider;
 use Laravel\Nova\Menu\Menu;
 use Laravel\Nova\Menu\MenuItem;
 use Laravel\Nova\Menu\MenuSection;
-use Illuminate\Http\Request;
 use Laravel\Nova\LogViewer\LogViewer;
+use Illuminate\Http\Request;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -46,8 +46,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 MenuSection::make('Roles & Permissions', [
                     MenuItem::make('Roles')
                         ->path('/resources/roles'),
-                    MenuItem::make('Permissions')
-                        ->path('/resources/permissions')
+                    // MenuItem::make('Permissions')
+                    //     ->path('/resources/permissions')
                 ])->icon('lock-closed')->collapsable(),
                 MenuSection::make("Logs")->icon("desktop-computer")->path('/logs'),
             ];

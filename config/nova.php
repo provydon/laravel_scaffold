@@ -103,6 +103,7 @@ return [
         HandleInertiaRequests::class,
         DispatchServingNovaEvent::class,
         BootTools::class,
+        \Vyuldashev\NovaPermission\ForgetCachedPermissions::class,
     ],
 
     'api_middleware' => [

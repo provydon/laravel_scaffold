@@ -42,10 +42,6 @@ $ npm install
 # migrate and seed
 $ php artisan migrate --seed
 
-# install passport for api
-$ php artisan passport:install
-
-
 # start server
 $ php artisan serve
 

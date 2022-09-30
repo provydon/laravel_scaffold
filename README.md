@@ -54,8 +54,6 @@ $ php artisan serve
 # After you've started the server sometime later in the future during development, if u wish to refresh the database, run
 $ php artisan migrate:refresh --seed
 
-# Then reset access token for the api
-$ php artisan passport:client --personal
 
 # And you're good to go!
 ```

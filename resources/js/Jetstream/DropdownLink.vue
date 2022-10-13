@@ -1,21 +1,28 @@
+<script setup>
+import { Link } from '@inertiajs/inertia-vue3';
+
+defineProps({
+    href: String,
+    as: String,
+});
+</script>
+
 <template>
     <div>
-        <button type="submit" class="block w-full px-4 py-2 text-sm leading-5 text-gray-700 text-left hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition" v-if="as == 'button'">
-            <slot></slot>
+        <button v-if="as == 'button'" type="submit" class="block w-full px-4 py-2 text-sm leading-5 text-gray-700 text-left hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition">
+            <slot />
         </button>
-        
-        <a :href="href" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition" v-else-if="as =='a'">
-            <slot></slot>
+
+        <a v-else-if="as =='a'" :href="href" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition">
+            <slot />
         </a>
 
-        <Link :href="href" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition" v-else>
-            <slot></slot>
+        <div v-else-if="as =='div'" class="cursor-pointer block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition">
+            <slot />
+        </div>
+
+        <Link v-else :href="href" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition">
+            <slot />
         </Link>
     </div>
 </template>
-
-<script>
-    export default {
-        props: ['href', 'as']
-    }
-</script>

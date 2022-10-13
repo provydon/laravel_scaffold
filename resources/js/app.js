@@ -1,24 +1,30 @@
-require('./bootstrap');
+import "../css/app.css";
+import "./bootstrap";
 
-// Import modules...
-import { App as InertiaApp, Link, plugin as InertiaPlugin } from '@inertiajs/inertia-vue3';
-import { InertiaProgress } from '@inertiajs/progress';
-import { createApp, h } from 'vue';
-import AppGlobalMethods from './Plugins/AppGlobalMethods';
+import { createInertiaApp } from "@inertiajs/inertia-vue3";
+import { InertiaProgress } from "@inertiajs/progress";
+import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
+import { createApp, h } from "vue";
+import { ZiggyVue } from "../../vendor/tightenco/ziggy/dist/vue.m";
+import AppGlobalMethods from "./Plugins/AppGlobalMethods";
 
-const el = document.getElementById('app');
+const appName =
+    window.document.getElementsByTagName("title")[0]?.innerText || "Laravel";
 
-createApp({
-    render: () =>
-        h(InertiaApp, {
-            initialPage: JSON.parse(el.dataset.page),
-            resolveComponent: (name) => require(`./Pages/${name}`).default,
-        }),
-})
-    .component('Link', Link)
-    .mixin({ methods: { route } })
-    .use(InertiaPlugin)
-    .use(AppGlobalMethods)
-    .mount(el);
+createInertiaApp({
+    title: (title) => `${title} - ${appName}`,
+    resolve: (name) =>
+        resolvePageComponent(
+            `./Pages/${name}.vue`,
+            import.meta.glob("./Pages/**/*.vue")
+        ),
+    setup({ el, app, props, plugin }) {
+        return createApp({ render: () => h(app, props) })
+            .use(plugin)
+            .use(AppGlobalMethods)
+            .use(ZiggyVue, Ziggy)
+            .mount(el);
+    },
+});
 
-InertiaProgress.init({ color: '#4B5563' });
+InertiaProgress.init({ color: "#4B5563" });

@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import SiteLayout from "@/Layouts/SiteLayout";
+import SiteLayout from "@/Layouts/SiteLayout.vue";
 
 export default {
   props: { appName: String },

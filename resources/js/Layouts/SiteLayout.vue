@@ -21,7 +21,7 @@
 
 <script>
 // Imports
-import Navbar from "@/Components/Navbar";
+import Navbar from "@/Components/Navbar.vue";
 
 // Main App
 export default {

@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Inertia\Inertia;
 use Laravel\Horizon\Horizon;
+use Opcodes\LogViewer\Facades\LogViewer;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,6 +31,11 @@ class AppServiceProvider extends ServiceProvider
             if (env('APP_ENV') == 'local') {
                 return true;
             }
+        });
+
+        LogViewer::auth(function ($request) {
+            return $request->user()
+                && $request->user()->is_admin;
         });
     }
 }

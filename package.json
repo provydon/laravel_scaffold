@@ -9,7 +9,9 @@
         "del": "rm -f public/build/manifest.json",
         "link-git": "git config --local include.path '../.gitconfig'",
         "build-custom-date-filter": "cd nova-components/CustomDateFilter && npm run dev",
-        "build-custom-date-filter-prod": "cd nova-components/CustomDateFilter && npm run prod"
+        "build-custom-date-filter-prod": "cd nova-components/CustomDateFilter && npm run prod",
+        "build-custom-js-css": "cd nova-components/CustomJsCss && npm run dev",
+        "build-custom-js-css-prod": "cd nova-components/CustomJsCss && npm run prod"
     },
     "devDependencies": {
         "laravel-mix": "^6.0.6",

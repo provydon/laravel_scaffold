@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use CompanyApi\DateFilter\DateFilter;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use Laravel\Nova\Fields\Gravatar;
@@ -84,7 +85,9 @@ class User extends Resource
      */
     public function filters(NovaRequest $request)
     {
-        return [];
+        return [
+            new DateFilter,
+        ];
     }
 
     /**

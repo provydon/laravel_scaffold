@@ -11,7 +11,9 @@
         "build-custom-date-filter": "cd nova-components/CustomDateFilter && npm run dev",
         "build-custom-date-filter-prod": "cd nova-components/CustomDateFilter && npm run prod",
         "build-custom-js-css": "cd nova-components/CustomJsCss && npm run dev",
-        "build-custom-js-css-prod": "cd nova-components/CustomJsCss && npm run prod"
+        "build-custom-js-css-prod": "cd nova-components/CustomJsCss && npm run prod",
+        "build-date-filter": "cd nova-components/DateFilter && npm run dev",
+        "build-date-filter-prod": "cd nova-components/DateFilter && npm run prod"
     },
     "devDependencies": {
         "laravel-mix": "^6.0.6",

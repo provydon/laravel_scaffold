@@ -6,10 +6,8 @@ use Illuminate\Support\Facades\Storage;
 
 class FileService
 {
-
     public static function storeFile($file, $folder, $cloud = false)
     {
-
         if ($cloud) {
             $path = $file->store($folder, 's3');
         } else {
@@ -28,7 +26,6 @@ class FileService
             Storage::delete($path);
         }
 
-        return;
     }
 }
 

@@ -15,14 +15,11 @@ class SocialAuthController extends Controller
         return Socialite::driver('google')->redirect();
     }
 
-
     public function googleCallback()
     {
         try {
-
             $googleUser = Socialite::driver('google')->user();
             $existUser = User::where('email', $googleUser->email)->first();
-
 
             if ($existUser) {
                 Auth::loginUsingId($existUser->id);
@@ -36,6 +33,7 @@ class SocialAuthController extends Controller
                 $user->save();
                 Auth::loginUsingId($user->id);
             }
+
             return redirect()->to('/dashboard');
         } catch (Exception $e) {
             throw $e;
@@ -50,23 +48,21 @@ class SocialAuthController extends Controller
     /**
      * Return a callback method from facebook api.
      *
-     * @return callback URL from facebook
+     * @return callable URL from facebook
      */
     public function facebookCallback(Request $request)
     {
-        if (!$request->has('code') || $request->has('denied')) {
+        if (! $request->has('code') || $request->has('denied')) {
             return redirect('/');
         }
 
         try {
-
             $facebookUser = Socialite::driver('facebook')->user();
             $existUser = User::where('email', $facebookUser->email)->first();
 
             if ($existUser) {
                 Auth::loginUsingId($existUser->id);
             } else {
-
                 $user = new User;
                 $user->name = $facebookUser->name;
                 $user->email = $facebookUser->email;
@@ -75,8 +71,10 @@ class SocialAuthController extends Controller
                 $user->password = md5(rand(1, 10000));
                 $user->save();
                 Auth::loginUsingId($user->id);
+
                 return redirect()->to('/dashboard');
             }
+
             return redirect()->to('/dashboard');
         } catch (Exception $e) {
             throw $e;

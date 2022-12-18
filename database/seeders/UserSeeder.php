@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
             'last_name' => 'Ifeosame',
             'is_admin' => true,
             'email' => 'providence@reftek.co',
-            'password' => bcrypt('favour007')
+            'password' => bcrypt('favour007'),
         ]);
 
         $new_user->roles()->attach(1);

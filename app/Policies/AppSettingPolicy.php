@@ -2,10 +2,10 @@
 
 namespace App\Policies;
 
-use App\Models\User;
 use App\Models\AppSetting;
-use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Auth;
 
 class AppSettingPolicy
 {
@@ -18,30 +18,29 @@ class AppSettingPolicy
      * @return mixed
      */
     public $permissions = [];
+
     public $access = false;
 
     public function __construct()
     {
-
         $user = Auth::user();
         if (isset($user)) {
-            # code...
+            // code...
             foreach ($user->roles as $item) {
                 foreach ($item->permissions as $key => $value) {
-                    array_push($this->permissions,$value->name);
+                    array_push($this->permissions, $value->name);
                 }
             }
         }
 
-
-        if (in_array("settings_access", $this->permissions)) {
+        if (in_array('settings_access', $this->permissions)) {
             $this->access = true;
         }
     }
 
     public function viewAny(User $user)
     {
-        return in_array("settings_access", $this->permissions);
+        return in_array('settings_access', $this->permissions);
     }
 
     /**
@@ -53,7 +52,7 @@ class AppSettingPolicy
      */
     public function view(User $user, AppSetting $appSetting)
     {
-        return $this->access && in_array("settings_view", $this->permissions);
+        return $this->access && in_array('settings_view', $this->permissions);
     }
 
     /**
@@ -64,7 +63,7 @@ class AppSettingPolicy
      */
     public function create(User $user)
     {
-        return $this->access && in_array("settings_create", $this->permissions);
+        return $this->access && in_array('settings_create', $this->permissions);
     }
 
     /**
@@ -76,7 +75,7 @@ class AppSettingPolicy
      */
     public function update(User $user, AppSetting $appSetting)
     {
-        return $this->access && in_array("settings_edit", $this->permissions);
+        return $this->access && in_array('settings_edit', $this->permissions);
     }
 
     /**
@@ -88,7 +87,7 @@ class AppSettingPolicy
      */
     public function delete(User $user, AppSetting $appSetting)
     {
-        return $this->access && in_array("settings_delete", $this->permissions);
+        return $this->access && in_array('settings_delete', $this->permissions);
     }
 
     /**
@@ -100,7 +99,7 @@ class AppSettingPolicy
      */
     public function restore(User $user, AppSetting $appSetting)
     {
-        return $this->access && in_array("settings_restore", $this->permissions);
+        return $this->access && in_array('settings_restore', $this->permissions);
     }
 
     /**
@@ -112,6 +111,6 @@ class AppSettingPolicy
      */
     public function forceDelete(User $user, AppSetting $appSetting)
     {
-        return $this->access && in_array("settings_force_delete", $this->permissions);
+        return $this->access && in_array('settings_force_delete', $this->permissions);
     }
 }

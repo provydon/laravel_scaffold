@@ -24,7 +24,7 @@ class UserLog extends Resource
      */
     public function title()
     {
-        return $this->first_name . ' ' . $this->last_name;
+        return $this->first_name.' '.$this->last_name;
     }
 
     /**
@@ -33,7 +33,7 @@ class UserLog extends Resource
      * @var array
      */
     public static $search = [
-        'id'
+        'id',
     ];
 
     /**

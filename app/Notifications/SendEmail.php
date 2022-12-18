@@ -18,9 +18,13 @@ class SendEmail extends Notification implements ShouldQueue
      * @return void
      */
     public $subject;
+
     public $message;
+
     public $user;
+
     public $link;
+
     public $name;
 
     public function __construct($user, $subject, $message, $link = null)
@@ -29,7 +33,7 @@ class SendEmail extends Notification implements ShouldQueue
         $this->message = $message;
         $this->user = $user;
         $this->link = $link;
-        $this->name = $user->first_name ? $user->first_name : "Welcome To SitEat";
+        $this->name = $user->first_name ? $user->first_name : 'Welcome To SitEat';
     }
 
     /**
@@ -54,15 +58,15 @@ class SendEmail extends Notification implements ShouldQueue
         if ($this->link != null) {
             return (new MailMessage)
                 ->subject($this->subject)
-                ->greeting("Hello " . ucfirst($this->name))
-                ->line(new HtmlString($this->message . '<br>'))
+                ->greeting('Hello '.ucfirst($this->name))
+                ->line(new HtmlString($this->message.'<br>'))
                 ->action('Click Here', url($this->link))
                 ->line('Thank you for using our application!');
         } else {
             return (new MailMessage)
                 ->subject($this->subject)
-                ->greeting("Hello " . ucfirst($this->name))
-                ->line(new HtmlString($this->message . '<br>'))
+                ->greeting('Hello '.ucfirst($this->name))
+                ->line(new HtmlString($this->message.'<br>'))
                 // ->action('Notification Action', url('/'))
                 ->line('Thank you for using our application!');
         }

@@ -13,8 +13,8 @@ class AllServicesServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        foreach (glob(app_path() . '/Services/AllServices/*.php') as $file) {
-            require_once($file);
+        foreach (glob(app_path().'/Services/AllServices/*.php') as $file) {
+            require_once $file;
         }
     }
 

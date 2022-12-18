@@ -15,15 +15,14 @@ use DigitalCreative\CollapsibleResourceManager\Resources\InternalLink;
 use DigitalCreative\CollapsibleResourceManager\Resources\LensResource;
 use DigitalCreative\CollapsibleResourceManager\Resources\NovaResource;
 use DigitalCreative\CollapsibleResourceManager\Resources\TopLevelResource;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Cards\Help;
-use Laravel\Nova\Nova;
-use Laravel\Nova\NovaApplicationServiceProvider;
-use Laravel\Nova\Menu\Menu;
+use Laravel\Nova\LogViewer\LogViewer;
 use Laravel\Nova\Menu\MenuItem;
 use Laravel\Nova\Menu\MenuSection;
-use Laravel\Nova\LogViewer\LogViewer;
-use Illuminate\Http\Request;
+use Laravel\Nova\Nova;
+use Laravel\Nova\NovaApplicationServiceProvider;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -49,7 +48,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                     // MenuItem::make('Permissions')
                     //     ->path('/resources/permissions')
                 ])->icon('lock-closed')->collapsable(),
-                MenuSection::make("Logs")->icon("desktop-computer")->path('/logs'),
+                MenuSection::make('Logs')->icon('desktop-computer')->path('/logs'),
             ];
         });
     }
@@ -90,11 +89,11 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             // new Help,
-            (new UsersPerDay())->width("1/3"),
-            (new NewUsers())->help('This is all new users in the database.')->width("1/3"),
-            (new UsersReturnedToday())->width("1/3"),
-            (new AverageReturns())->width("1/3"),
-            (new UsersLoggedInPerDay())->width("1/3"),
+            (new UsersPerDay())->width('1/3'),
+            (new NewUsers())->help('This is all new users in the database.')->width('1/3'),
+            (new UsersReturnedToday())->width('1/3'),
+            (new AverageReturns())->width('1/3'),
+            (new UsersLoggedInPerDay())->width('1/3'),
         ];
     }
 

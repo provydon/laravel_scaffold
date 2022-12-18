@@ -9,9 +9,7 @@ use App\Models\User;
 use App\Services\AllServices\FileService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Password;
-use Illuminate\Support\Facades\Storage;
 
 class AuthController extends Controller
 {
@@ -19,11 +17,11 @@ class AuthController extends Controller
     {
         $user = $this->authenticate($request->email, $request->password);
         $data = [
-            "token" => $user->createToken(config('app.key'))->plainTextToken,
-            "user" => new ResourcesUser($user),
+            'token' => $user->createToken(config('app.key'))->plainTextToken,
+            'user' => new ResourcesUser($user),
         ];
 
-        return Helper::apiRes("successfully logged in", $data);
+        return Helper::apiRes('successfully logged in', $data);
     }
 
     public function logout()
@@ -31,7 +29,7 @@ class AuthController extends Controller
         $user = Auth::user()->token();
         $user->revoke();
 
-        return Helper::apiRes("User logged out");
+        return Helper::apiRes('User logged out');
     }
 
     /**
@@ -45,7 +43,7 @@ class AuthController extends Controller
         try {
             //code...
             $user = new User;
-            $user->name = $request->name ? $request->name : ucwords($request->first_name) . ' ' . ucwords($request->last_name);
+            $user->name = $request->name ? $request->name : ucwords($request->first_name).' '.ucwords($request->last_name);
             $user->email = $request->email;
             $user->username = $request->username;
             $user->phone = $request->phone;
@@ -70,11 +68,11 @@ class AuthController extends Controller
 
         $user = $this->authenticate($request->email, $request->password);
         $data = [
-            "token" => $user->createToken(config('app.key'))->plainTextToken,
-            "user" => new ResourcesUser($user),
+            'token' => $user->createToken(config('app.key'))->plainTextToken,
+            'user' => new ResourcesUser($user),
         ];
 
-        return Helper::apiRes("uccessfully registered", $data);
+        return Helper::apiRes('uccessfully registered', $data);
     }
 
     public function authenticate($email, $password)
@@ -83,8 +81,8 @@ class AuthController extends Controller
         Auth::attempt(['email' => $email, 'password' => $password]);
 
         // if authentication failed
-        if (!Auth::check()) {
-            return Helper::apiRes("invalid login credentials", [], false, 401);
+        if (! Auth::check()) {
+            return Helper::apiRes('invalid login credentials', [], false, 401);
         }
 
         // Authentication Succeeded
@@ -95,6 +93,6 @@ class AuthController extends Controller
     {
         Password::sendResetLink($request->all());
 
-        return Helper::apiRes("Reset password link sent to your email");
+        return Helper::apiRes('Reset password link sent to your email');
     }
 }

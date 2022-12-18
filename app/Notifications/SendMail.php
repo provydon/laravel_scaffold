@@ -3,7 +3,6 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\HtmlString;
@@ -11,8 +10,11 @@ use Illuminate\Support\HtmlString;
 class SendMail extends Notification
 {
     use Queueable;
+
     public $user;
+
     public $title;
+
     public $description;
 
     /**
@@ -49,7 +51,7 @@ class SendMail extends Notification
         return (new MailMessage)
             ->from(config('app.email'), config('app.name'))
             ->subject($this->title)
-            ->line(new HtmlString($this->description. '<br>'))
+            ->line(new HtmlString($this->description.'<br>'))
             ->line('Thank you for using our application!');
     }
 

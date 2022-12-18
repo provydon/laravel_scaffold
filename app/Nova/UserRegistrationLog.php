@@ -43,7 +43,7 @@ class UserRegistrationLog extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            Number::make("Total New Users", "total"),
+            Number::make('Total New Users', 'total'),
             DateTime::make('Date', 'created_at')->format('DD-MMM-YYYY'),
         ];
     }

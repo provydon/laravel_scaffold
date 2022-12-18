@@ -4,8 +4,6 @@ namespace App\Listeners;
 
 use App\Events\NotifyUser;
 use App\Notifications\SendMail;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 
 class SendEmail
 {

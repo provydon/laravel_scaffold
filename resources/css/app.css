@@ -30,3 +30,15 @@
     width: auto;
     margin-bottom: 15px;
 }
+
+#nprogress .bar {
+    z-index: 5000 !important;
+}
+
+#nprogress .spinner {
+    z-index: 5000 !important;
+}
+
+#nprogress .peg {
+    z-index: 5000 !important;
+}

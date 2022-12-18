@@ -111,7 +111,7 @@
         class="px-2 pt-2 pb-3 flex flex-col items-center justify-center text-center"
       >
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="/" class="nav-link">Home</a>
+        <Link href="/" class="nav-link">Home</Link>
         <div v-if="canLogin" class="flex flex-col lg:flex-row">
           <Link
             v-if="$page.props.user"
@@ -142,6 +142,8 @@
 
 
 <script>
+import { Link } from "@inertiajs/inertia-vue3";
+
 export default {
   props: {
     canLogin: Boolean,
@@ -155,6 +157,6 @@ export default {
       showMobile: false,
     };
   },
-  components: {},
+  components: {Link},
 };
 </script>

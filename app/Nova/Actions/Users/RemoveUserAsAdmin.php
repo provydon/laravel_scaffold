@@ -5,7 +5,6 @@ namespace App\Nova\Actions\Users;
 use App\Events\NotifyUser;
 use App\Models\Role;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Collection;
 use Laravel\Nova\Actions\Action;
@@ -34,7 +33,6 @@ class RemoveUserAsAdmin extends Action
             for ($i = 1; $i <= $roles; $i++) {
                 $user->roles()->detach($i);
             }
-
 
             // Send Notifications
             event(new NotifyUser($user, 'Account Removed as Admin', 'Your account has been Account Removed as admin by the admin.'));

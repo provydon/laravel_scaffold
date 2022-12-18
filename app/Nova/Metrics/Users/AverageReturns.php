@@ -35,7 +35,7 @@ class AverageReturns extends Value
 
         // Log Percentages
         $log = UserPercentageLog::where('created_at', '>=', $dateTime)->first();
-        if (!$log) {
+        if (! $log) {
             $newLog = new UserPercentageLog;
             $newLog->percentage = $returned_users;
             $newLog->number = $logs;

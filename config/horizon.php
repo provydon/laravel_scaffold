@@ -195,7 +195,7 @@ return [
                 'balance' => 'auto',
                 'processes' => 6,
                 'tries' => 3,
-          ],
+            ],
         ],
     ],
 ];

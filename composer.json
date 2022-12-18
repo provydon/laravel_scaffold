@@ -14,9 +14,9 @@
         "inertiajs/inertia-laravel": "^0.6.3",
         "intervention/image": "^2.5",
         "kiritokatklian/nova-permission": "^4.0",
-        "laravel/framework": "^9.35",
+        "laravel/framework": "^9.44",
         "laravel/jetstream": "^2.3",
-        "laravel/nova": "~4.16.1",
+        "laravel/nova": "~4.19.5",
         "laravel/nova-log-viewer": "^0.1.2",
         "laravel/sanctum": "^2.15",
         "laravel/socialite": "^5.2",
@@ -85,10 +85,6 @@
         {
             "type": "path",
             "url": "./nova-components/NovaTheme"
-        },
-        {
-            "type": "path",
-            "url": "./nova-components/CustomDateFilter"
         },
         {
             "type": "path",

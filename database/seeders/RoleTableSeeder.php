@@ -16,13 +16,13 @@ class RoleTableSeeder extends Seeder
     public function run()
     {
         $roles = [
-            "Super Admin"
+            'Super Admin',
         ];
 
         foreach ($roles as $key => $value) {
             $role = new Role();
             $role->name = $value;
-            $role->guard_name = "web";
+            $role->guard_name = 'web';
             $role->save();
 
             $perms = Permission::count();

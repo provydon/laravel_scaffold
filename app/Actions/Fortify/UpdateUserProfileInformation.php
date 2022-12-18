@@ -31,7 +31,6 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             $user->image = $path;
             $user->save();
         }
-        
 
         if ($input['email'] !== $user->email &&
             $user instanceof MustVerifyEmail) {

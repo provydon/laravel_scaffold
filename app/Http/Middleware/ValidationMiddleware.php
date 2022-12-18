@@ -18,16 +18,15 @@ class ValidationMiddleware
     public function handle($request, Closure $next, $validationName)
     {
         if ($validationName && is_string($validationName) && strlen($validationName) > 0) {
-
             // request data
             $validationData = $request->all();
 
             // validation rules
-            $validationRules = config("validations.rules.".$validationName, []);
+            $validationRules = config('validations.rules.'.$validationName, []);
 
             // initialize validation with request if is a function
-            if(is_callable($validationRules)){
-              $validationRules = $validationRules($request);
+            if (is_callable($validationRules)) {
+                $validationRules = $validationRules($request);
             }
 
             // get route parameters
@@ -38,36 +37,36 @@ class ValidationMiddleware
 
             // replace placeholders in rules with route params
             foreach ($routeParameters as $key => $value) {
-                if(is_array($value)){
+                if (is_array($value)) {
                     continue;
                 }
-                foreach($validationRules as $ruleKey => $rules){
-                    $validationRules[$ruleKey] = str_replace("{" . $key . "}", $value, $validationRules[$ruleKey]);
+                foreach ($validationRules as $ruleKey => $rules) {
+                    $validationRules[$ruleKey] = str_replace('{'.$key.'}', $value, $validationRules[$ruleKey]);
                 }
             }
 
             // replace placeholders in rules with request data
             foreach ($requestData as $key => $value) {
-                if(is_array($value)){
+                if (is_array($value)) {
                     continue;
                 }
-                foreach($validationRules as $ruleKey => $rules){
-                    if($key === "authenticated_user"){
+                foreach ($validationRules as $ruleKey => $rules) {
+                    if ($key === 'authenticated_user') {
                         // replace "{authenticated_user}" with authenticated user id
                         $validationRules[$ruleKey] = str_replace(
-                            "{" . $key . "}",
+                            '{'.$key.'}',
                             $value->id,
                             $validationRules[$ruleKey]
                         );
                         // move on to next step
                         continue;
                     }
-                    $validationRules[$ruleKey] = str_replace("{" . $key . "}",$value, $validationRules[$ruleKey]);
+                    $validationRules[$ruleKey] = str_replace('{'.$key.'}', $value, $validationRules[$ruleKey]);
                 }
             }
 
             // validation messages
-            $validationMessages = config("validations.messages", []);
+            $validationMessages = config('validations.messages', []);
 
             // validation
             $validation = Validator::make($validationData, $validationRules, $validationMessages);
@@ -75,10 +74,10 @@ class ValidationMiddleware
             // checks for when validation fails.
             if ($validation->fails()) {
                 return response()->json([
-                    "success" => false,
-                    "message" => "Validation error.",
-                    "type" => "validation_error",
-                    "errors" => $validation->errors()->getMessages()
+                    'success' => false,
+                    'message' => 'Validation error.',
+                    'type' => 'validation_error',
+                    'errors' => $validation->errors()->getMessages(),
                 ], 422);
             }
         }

@@ -21,13 +21,11 @@ class LogUserForTheDay
         $user = Auth::user();
 
         if ($user) {
-
             try {
                 General::logUserForTheDay($user);
             } catch (\Throwable $th) {
                 return route('login');
             }
-
         }
 
         return $next($request);

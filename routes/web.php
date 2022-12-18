@@ -15,15 +15,11 @@ use Inertia\Inertia;
 |
 */
 
-
-
-
 Route::get('/', 'PageController@getIndex')->name('index');
 Route::get('/google-redirect', 'SocialAuthController@googleRedirect')->name('google-redirect');
 Route::get('/google-callback', 'SocialAuthController@googleCallback')->name('google-callback');
 Route::get('/facebook-redirect', 'SocialAuthController@facebookRedirect')->name('facebook-redirect');
 Route::get('/facebook-callback', 'SocialAuthController@facebookCallback')->name('facebook-callback');
-
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');

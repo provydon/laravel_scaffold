@@ -29,7 +29,6 @@ class UserPercentageLog extends Resource
         return "Site's Percentage Of returned Users Per Day";
     }
 
-
     /**
      * The columns that should be searched.
      *
@@ -49,13 +48,13 @@ class UserPercentageLog extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            Number::make("Percentage of Users Returned", 'percentage')->displayUsing(function () {
-                return $this->percentage . "%";
+            Number::make('Percentage of Users Returned', 'percentage')->displayUsing(function () {
+                return $this->percentage.'%';
             })->sortable()
                 ->rules('required', 'max:255'),
-            Number::make("Returned Users", 'number')->sortable()
+            Number::make('Returned Users', 'number')->sortable()
                 ->rules('required', 'max:255'),
-            Number::make("Total number of Users before that day", 'total')->sortable()
+            Number::make('Total number of Users before that day', 'total')->sortable()
                 ->rules('required', 'max:255'),
             DateTime::make('Date', 'created_at')->format('DD-MMM-YYYY'),
         ];

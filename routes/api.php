@@ -18,18 +18,15 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-
- // Auth Routes
- Route::post('login', 'Api\AuthController@login')->middleware(["validate:login"]);
- Route::post('logout', 'Api\AuthController@logout')->middleware(["validate:login"]);
- Route::post('register', 'Api\AuthController@register')->middleware(["validate:register"]);
- Route::post('forgot-password', 'Api\AuthController@forgotPassword')->middleware(["validate:forgot-password"]);
-
+// Auth Routes
+Route::post('login', 'Api\AuthController@login')->middleware(['validate:login']);
+Route::post('logout', 'Api\AuthController@logout')->middleware(['validate:login']);
+Route::post('register', 'Api\AuthController@register')->middleware(['validate:register']);
+Route::post('forgot-password', 'Api\AuthController@forgotPassword')->middleware(['validate:forgot-password']);
 
 // Logged In Routes
 Route::middleware(['auth:sanctum'])->group(function () {
-
-     // User Routes
-     Route::get('user', 'Api\UserController@index');
-     Route::post('user/update', 'Api\UserController@update')->middleware(["validate:update-user"]);
+    // User Routes
+    Route::get('user', 'Api\UserController@index');
+    Route::post('user/update', 'Api\UserController@update')->middleware(['validate:update-user']);
 });

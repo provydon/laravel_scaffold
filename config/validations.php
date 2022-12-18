@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Validation\Rule;
-
 /**
  * This file contains validation rules, messages and parameters for
  * all requests within the api that need validation
@@ -9,7 +7,7 @@ use Illuminate\Validation\Rule;
 return [
     'rules' => [
         //Auth Validations
-         'login' => [
+        'login' => [
             'email' => 'required|exists:users,email',
             'password' => 'required',
         ],
@@ -28,7 +26,7 @@ return [
 
         // User validations
         'update-user' => [
-           'first_name' => 'string|max:255',
+            'first_name' => 'string|max:255',
             'last_name' => 'string|max:255',
             'phone' => 'string|max:255|unique:users,phone',
         ],

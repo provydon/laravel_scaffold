@@ -4,12 +4,10 @@ namespace App\Services\AllServices;
 
 use App\Models\User;
 use App\Models\UserLog;
-use Carbon\Carbon;
 use Exception;
 
 class General
 {
-
     public static function logUserForTheDay(User $user)
     {
         if (isset($user->approved)) {

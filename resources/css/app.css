@@ -1,16 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+main{
+    min-height: 50vh;
+}
+
 .container {
     @apply max-w-7xl mx-auto;
 }
+
+.jump {
+    @apply transition duration-500 ease-in-out transform hover:scale-105 cursor-pointer;
+}
+
+
+.btn{
+    @apply cursor-pointer inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition;
+}
+
 
 .index-body {
     @apply my-10;
 }
 
 .nav-logo {
-    @apply h-7 mb-3 mt-3 w-auto;
+    @apply h-11 mb-3 mt-3 w-auto;
 }
 
 .nav-link {
@@ -41,4 +56,25 @@
 
 #nprogress .peg {
     z-index: 5000 !important;
+}
+
+.nav-link{
+    @apply text-base hover:text-indigo-500 transition mx-4 jump;
+}
+
+.nav-link.active{
+    @apply text-indigo-500;
+}
+
+.footer{
+    @apply px-4 md:px-0;
+    border: 1px solid rgba(203, 203, 203, 0.2);
+}
+
+.footer .nav-link{
+    @apply !ml-0 !pl-0 !items-start !text-left !justify-start pb-7 md:pb-0;
+}
+
+a{
+    @apply text-indigo-500;
 }

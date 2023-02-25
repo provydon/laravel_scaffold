@@ -1,162 +1,138 @@
 <template>
-  <nav>
-    <div class="container">
-      <div class="relative flex items-center justify-between h-16">
-        <div class="absolute inset-y-0 right-0 flex items-center lg:hidden">
-          <!-- Mobile menu button-->
-          <button
-            type="button"
-            class="inline-flex items-center justify-center p-2 rounded-md bg-transparent text-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-            aria-controls="mobile-menu"
-            aria-expanded="false"
-            @click="showMobile = !showMobile"
-          >
-            <span class="sr-only">Open main menu</span>
-            <!--
+    <nav>
+        <div class="container">
+            <div class="relative flex items-center justify-between py-6">
+                <div
+                    class="absolute inset-y-0 right-0 flex items-center lg:hidden"
+                >
+                    <!-- Mobile menu button-->
+                    <button
+                        type="button"
+                        class="inline-flex items-center justify-center p-2 rounded-md bg-transparent text-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                        aria-controls="mobile-menu"
+                        aria-expanded="false"
+                        @click="showMobile = !showMobile"
+                    >
+                        <span class="sr-only">Open main menu</span>
+                        <!--
             Icon when menu is closed.
 
             Heroicon name: outline/menu
 
             Menu open: "hidden", Menu closed: "block"
           -->
-            <svg
-              class="block h-6 w-6"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-            <!--
+                        <svg
+                            class="block h-6 w-6"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            aria-hidden="true"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"
+                            />
+                        </svg>
+                        <!--
             Icon when menu is open.
 
             Heroicon name: outline/x
 
             Menu open: "block", Menu closed: "hidden"
           -->
-            <svg
-              class="hidden h-6 w-6"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
-        </div>
-        <div class="flex-1 flex items-center justify-center lg:justify-between">
-          <div class="flex-shrink-0 flex items-center">
-            <a href="/" class="flex items-center">
-              <img
-                src="/images/company_logo.png"
-                :alt="appName + ' logo'"
-                class="nav-logo mr-2"
-              />
-             <span>{{ appName }}</span> 
-            </a>
-          </div>
-          <div class="hidden lg:flex align-middle lg:ml-6">
-            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="/" class="nav-link">Home</a>
-
-            <div v-if="canLogin" class="hidden lg:flex">
-              <Link
-                v-if="$page.props.user"
-                href="/dashboard"
-                class="nav-link"
-              >
-                Dashboard
-              </Link>
-
-              <template v-else>
-                <Link :href="route('login')" class="nav-link">
-                  Login
-                </Link>
-
-                <Link
-                  v-if="canRegister"
-                  :href="route('register')"
-                  class="nav-link"
+                        <svg
+                            class="hidden h-6 w-6"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            aria-hidden="true"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"
+                            />
+                        </svg>
+                    </button>
+                </div>
+                <div
+                    class="flex-1 flex items-center justify-center lg:justify-between"
                 >
-                  Register
-                </Link>
-              </template>
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="/" class="flex items-center">
+                            <img
+                                src="/images/company_logo.png"
+                                :alt="appName + ' logo'"
+                                class="nav-logo mr-2"
+                            />
+                        </a>
+                    </div>
+                    <div class="hidden lg:flex align-middle lg:ml-6">
+                        <JetNavLink
+                            :href="route('index')"
+                            :active="route().current('index')"
+                        >
+                            Home
+                        </JetNavLink>
+                        <Link href="/dashboard" class="btn !py-3 !px-5">
+                            <i
+                                class="fa-solid fa-arrow-up-right-from-square mr-2"
+                            ></i>
+                            Dashboard
+                        </Link>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
 
-    <!-- Mobile menu, show/hide based on menu state. -->
-    <div
-      class="lg:hidden transition duration-150 ease-in-out"
-      id="mobile-menu"
-      v-if="showMobile"
-    >
-      <div
-        class="px-2 pt-2 pb-3 flex flex-col items-center justify-center text-center"
-      >
-        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <Link href="/" class="nav-link">Home</Link>
-        <div v-if="canLogin" class="flex flex-col lg:flex-row">
-          <Link
-            v-if="$page.props.user"
-            href="/dashboard"
-            class="nav-link"
-          >
-            Dashboard
-          </Link>
-
-          <template v-else>
-            <Link :href="route('login')" class="nav-link">
-              Login
-            </Link>
-
-            <Link
-              v-if="canRegister"
-              :href="route('register')"
-              class="nav-link"
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div
+            class="lg:hidden transition duration-150 ease-in-out"
+            id="mobile-menu"
+            v-if="showMobile"
+        >
+            <div
+                class="px-2 pt-2 pb-3 flex flex-col items-center justify-center text-center"
             >
-              Register
-            </Link>
-          </template>
+                <ResponsiveNavLink
+                    :href="route('index')"
+                    :active="route().current('index')"
+                >
+                    Home
+                </ResponsiveNavLink>
+                <Link href="/dashboard" class="btn !py-3 !px-5">
+                    <i class="fa-solid fa-arrow-up-right-from-square mr-2"></i>
+                    Dashboard
+                </Link>
+            </div>
         </div>
-      </div>
-    </div>
-  </nav>
+    </nav>
 </template>
-
 
 <script>
 import { Link } from "@inertiajs/inertia-vue3";
+import JetButton from "@/Jetstream/Button.vue";
+import JetNavLink from "@/Jetstream/NavLink.vue";
+import ResponsiveNavLink from "@/Jetstream/ResponsiveNavLink.vue";
 
 export default {
-  props: {
-    canLogin: Boolean,
-    canRegister: Boolean,
-    laravelVersion: String,
-    phpVersion: String,
-    appName: String,
-  },
-  data() {
-    return {
-      showMobile: false,
-    };
-  },
-  components: {Link},
+    props: {
+        canLogin: Boolean,
+        canRegister: Boolean,
+        laravelVersion: String,
+        phpVersion: String,
+        appName: String,
+    },
+    data() {
+        return {
+            showMobile: false,
+        };
+    },
+    components: { Link, JetButton, JetNavLink, ResponsiveNavLink },
 };
 </script>

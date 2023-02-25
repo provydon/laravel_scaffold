@@ -16,7 +16,7 @@ const classes = computed(() => {
 </script>
 
 <template>
-    <div>
+    <div class="w-full">
         <button v-if="as == 'button'" :class="classes" class="w-full text-left">
             <slot />
         </button>

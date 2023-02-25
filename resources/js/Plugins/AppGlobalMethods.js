@@ -14,9 +14,7 @@ export default {
                         if (code == "USD") {
                             symbol = "$";
                         }
-                        return (
-                            symbol + numeral(x).format("0,0")
-                        );
+                        return symbol + numeral(x).format("0,0");
                     } else {
                         return;
                     }
@@ -25,7 +23,7 @@ export default {
                     if (err.response) {
                         toastr.error(err.response.data.message);
                         if (err.response.data.errors) {
-                            this.showErrorMsg(err.response.data.errors)
+                            this.showErrorMsg(err.response.data.errors);
                         } else {
                             toastr.error(err.response.data.message);
                         }
@@ -34,10 +32,10 @@ export default {
                     }
                 },
                 showErrorMsg(errors) {
-                    var err = '';
+                    var err = "";
                     Object.entries(errors).forEach(function (key, value) {
                         toastr.error(key);
-                        err += key + "\r\n"
+                        err += key + "\r\n";
                     });
                     // if (errors.email) {
                     //     err = errors.email;
@@ -63,12 +61,14 @@ export default {
                     //     err = errors.phone;
                     //     toastr.error(errors.phone);
                     // }
-                    return err
+                    return err;
                 },
                 returnErrorMsg(errors) {
-                    var err = '';
+                    var err = "";
                     Object.entries(errors).forEach(function (key, value) {
-                        err += '<span class="text-danger block"> ' + key[1][0] +
+                        err +=
+                            '<span class="text-danger block"> ' +
+                            key[1][0] +
                             ' <i class="fas fa-exclamation-triangle"></i></span>';
                     });
                     // if (errors.email) {
@@ -95,12 +95,35 @@ export default {
                     //     err = err + '<span class="text-danger block"> ' + errors.phone[0] +
                     //         ' <i class="fas fa-exclamation-triangle"></i></span>';
                     // }
-                    return err
+                    return err;
                 },
                 back() {
                     window.history.back();
                 },
-            }
-        })
-    }
-}
+                animate() {
+                    window.addEventListener("scroll", () => {
+                        var animate = document.querySelectorAll(".animate");
+
+                        for (var i = 0; i < animate.length; i++) {
+                            var windowheight = window.innerHeight;
+                            var revealtop =
+                                animate[i].getBoundingClientRect().top;
+                            var revealpoint = 150;
+
+                            if (revealtop < windowheight - revealpoint) {
+                                animate[i].classList.add("active");
+                            } else {
+                                animate[i].classList.remove("active");
+                            }
+                        }
+                    });
+                },
+                scrollTo(id) {
+                    document.querySelector(id).scrollIntoView({
+                        behavior: "smooth",
+                    });
+                },
+            },
+        });
+    },
+};

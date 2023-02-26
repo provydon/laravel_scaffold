@@ -6,6 +6,18 @@ main{
     min-height: 50vh;
 }
 
+.animate {
+  position: relative;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: all 2s ease;
+}
+
+.animate.active {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
 .container {
     @apply max-w-7xl mx-auto;
 }

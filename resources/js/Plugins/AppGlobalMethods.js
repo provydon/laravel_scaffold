@@ -123,6 +123,20 @@ export default {
                         behavior: "smooth",
                     });
                 },
+                showPassword(id) {
+                    const password = document.querySelector(id),
+                        passwordLabel = document.querySelector(id + "label");
+
+                    if (password.type === "password") {
+                        password.type = "text";
+                        passwordLabel.innerHTML = "hide";
+                    } else {
+                        password.type = "password";
+                        passwordLabel.innerHTML = "show";
+                    }
+
+                    password.focus();
+                },
             },
         });
     },

@@ -29,10 +29,10 @@
             leading-4
             border
             rounded
-            hover:bg-white hover:text-siteat-red-500
-            focus:border-siteat-red-500 focus:text-siteat-red-500
+            hover:bg-white hover:text-indigo-500
+            focus:border-indigo-500 focus:text-indigo-500
           "
-          :class="{ 'bg-siteat-red-500 text-white': link.active }"
+          :class="{ 'bg-indigo-500 text-white': link.active }"
           :href="link.url"
           v-html="link.label"
         ></a>
@@ -47,10 +47,10 @@
             leading-4
             border
             rounded
-            hover:bg-white hover:text-siteat-red-500
-            focus:border-siteat-red-500 focus:text-siteat-red-500
+            hover:bg-white hover:text-indigo-500
+            focus:border-indigo-500 focus:text-indigo-500
           "
-          :class="{ 'bg-siteat-red-500 text-white': link.active }"
+          :class="{ 'bg-indigo-500 text-white': link.active }"
           :href="link.url"
           v-html="link.label"
         >
